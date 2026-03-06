@@ -16,7 +16,7 @@
 
 ## 🌐 Live Demo
 
-> 🔗 **[https://askmydoc-psi.vercel.app/]((https://askmydoc-psi.vercel.app/))**
+> 🔗 **[https://askmydoc-psi.vercel.app](https://askmydoc-psi.vercel.app)**
 
 ---
 
@@ -274,3 +274,4 @@ MIT — free for personal, commercial, and portfolio use. See [LICENSE](LICENSE)
 *If this project helped you — drop a ⭐ on GitHub!*
 
 </div>
+>
