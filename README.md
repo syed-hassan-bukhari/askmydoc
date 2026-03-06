@@ -16,7 +16,7 @@
 
 ## 🌐 Live Demo
 
-> 🔗 **[https://your-app.vercel.app]([https://your-app.vercel.app](https://askmydoc-psi.vercel.app/))**
+> 🔗 **[https://your-app.vercel.app]((https://askmydoc-psi.vercel.app/))**
 
 ---
 
