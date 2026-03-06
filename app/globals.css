@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Deep space violet-indigo light theme */
+    --background: 240 15% 97%;
+    --foreground: 240 20% 10%;
+    --muted: 245 20% 90%;
+    --muted-foreground: 245 10% 50%;
+    --primary: 252 97% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 245 25% 87%;
+    --secondary-foreground: 240 20% 10%;
+    --accent: 290 80% 62%;
+    --accent-foreground: 0 0% 100%;
+    --border: 245 20% 87%;
+    --input: 245 20% 87%;
+    --ring: 252 97% 65%;
+    --card: 240 20% 99%;
+    --card-foreground: 240 20% 10%;
+  }
+
+  .dark {
+    --background: 240 20% 6%;
+    --foreground: 240 15% 96%;
+    --muted: 240 18% 12%;
+    --muted-foreground: 240 10% 55%;
+    --primary: 252 97% 68%;
+    --primary-foreground: 240 20% 6%;
+    --secondary: 240 18% 15%;
+    --secondary-foreground: 240 15% 96%;
+    --accent: 290 80% 65%;
+    --accent-foreground: 240 20% 6%;
+    --border: 240 15% 18%;
+    --input: 240 15% 15%;
+    --ring: 252 97% 68%;
+    --card: 240 18% 9%;
+    --card-foreground: 240 15% 96%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "cv11", "ss01";
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+/* ─── Gradient text ─── */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(270deg, hsl(var(--primary)), hsl(var(--accent)), hsl(252 97% 80%));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* Glass card */
+  .glass {
+    background: hsla(var(--card) / 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsla(var(--border) / 0.6);
+  }
+
+  .dark .glass {
+    background: hsla(var(--card) / 0.55);
+  }
+
+  /* Glowing primary button */
+  .glow-primary {
+    box-shadow: 0 0 20px -4px hsl(var(--primary) / 0.6),
+                0 4px 16px -4px hsl(var(--primary) / 0.4);
+  }
+
+  .dark .glow-primary {
+    box-shadow: 0 0 28px -4px hsl(var(--primary) / 0.75),
+                0 4px 20px -4px hsl(var(--primary) / 0.5);
+  }
+
+  /* Subtle card glow on hover */
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.25),
+                0 8px 30px -8px hsl(var(--primary) / 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Sidebar gradient background */
+  .sidebar-bg {
+    background: linear-gradient(180deg, hsl(var(--muted) / 0.6), hsl(var(--background) / 0.8));
+  }
+
+  .dark .sidebar-bg {
+    background: linear-gradient(180deg, hsl(240 20% 8%), hsl(240 18% 7%));
+  }
+}
+
+/* ─── Keyframes ─── */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 hsl(var(--primary) / 0.5); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 10px hsl(var(--primary) / 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 hsl(var(--primary) / 0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes float-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes dot-pulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%            { transform: scale(1);   opacity: 1; }
+}
+
+/* ─── Typing cursor ─── */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: hsl(var(--primary));
+  margin-left: 3px;
+  border-radius: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-start infinite;
+}
+
+/* ─── AI Thinking dots ─── */
+.dot-typing span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  animation: dot-pulse 1.3s ease infinite;
+}
+.dot-typing span:nth-child(2) { animation-delay: 0.2s; }
+.dot-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ─── Citation chip ─── */
+.citation-chip {
+  animation: float-up 0.35s ease both;
+  background: hsl(var(--primary) / 0.08);
+  border: 1px solid hsl(var(--primary) / 0.2);
+  border-radius: 10px;
+  padding: 8px 12px;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.citation-chip:hover {
+  background: hsl(var(--primary) / 0.15);
+  border-color: hsl(var(--primary) / 0.45);
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+}
+
+.citation-chip.highlighted {
+  background: hsl(var(--primary) / 0.2);
+  border-color: hsl(var(--primary) / 0.6);
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.15);
+}
+
+/* ─── Message entrance ─── */
+.msg-enter {
+  animation: float-up 0.3s ease both;
+}
+
+/* ─── Skeleton shimmer ─── */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--secondary)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.25);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.5); }
+
+/* ─── Selection ─── */
+::selection {
+  background: hsl(var(--primary) / 0.25);
+  color: hsl(var(--foreground));
+}
+
+/* ─── Focus ring ─── */
+*:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.7);
+  outline-offset: 2px;
+}
+
+/* ─── Smooth transitions ─── */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 180ms;
+}
