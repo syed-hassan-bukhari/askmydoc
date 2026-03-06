@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // We removed the 'experimental' block because Server Actions are now default.
-  
-  // This keeps the fix for the missing canvas library
+  // Empty turbopack config — silences the Turbopack/webpack mismatch error on Vercel (Next.js 16)
+  turbopack: {},
+
+  // Keeps the canvas alias fix for pdf-parse
   webpack: (config) => {
     config.resolve.alias.canvas = false;
     return config;
