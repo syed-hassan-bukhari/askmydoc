@@ -4,8 +4,8 @@ import { InferenceClient } from '@huggingface/inference'
 // ── Hugging Face client (new router.huggingface.co endpoint) ──────────────
 const hf = new InferenceClient(process.env.HF_TOKEN || '')
 
-// Chat model — fully supported as a chat model on the new HF router
-const CHAT_MODEL = 'meta-llama/Llama-3.2-3B-Instruct'
+// Chat model — fully open, no gated access required
+const CHAT_MODEL = 'Qwen/Qwen2.5-7B-Instruct'
 // Real semantic embedding model
 const EMBED_MODEL = 'sentence-transformers/all-MiniLM-L6-v2'
 

@@ -71,7 +71,10 @@ export default function ChatInterface({ documents, messages, onNewMessage }: Cha
         }),
       })
 
-      if (!response.ok) throw new Error('Failed to get response')
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}))
+        throw new Error(errData.error || errData.details || 'Server error')
+      }
       const data = await response.json()
 
       // Typing animation
