@@ -33,7 +33,7 @@ export default function Sidebar({
   const [activeTab, setActiveTab] = useState<'chats' | 'documents'>('chats')
 
   return (
-    <aside className="w-72 flex flex-col overflow-hidden border-r border-border/60 sidebar-bg">
+    <aside className="w-72 h-full flex flex-col overflow-hidden border-r border-border/60 sidebar-bg">
       {/* Brand strip */}
       <div className="px-5 pt-5 pb-4">
         <motion.button
@@ -59,8 +59,8 @@ export default function Sidebar({
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`relative flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all ${activeTab === tab
-                ? 'text-[hsl(var(--primary))]'
-                : 'text-muted-foreground hover:text-foreground'
+              ? 'text-[hsl(var(--primary))]'
+              : 'text-muted-foreground hover:text-foreground'
               }`}
           >
             {activeTab === tab && (
@@ -125,13 +125,13 @@ export default function Sidebar({
                     transition={{ delay: i * 0.04 }}
                     onClick={() => onSelectSession(session.id)}
                     className={`w-full group flex items-start gap-3 p-3 rounded-xl text-left transition-all border ${currentSessionId === session.id
-                        ? 'border-[hsl(var(--primary))/0.35] bg-[hsl(var(--primary))/0.08] text-[hsl(var(--primary))]'
-                        : 'border-transparent hover:border-border hover:bg-muted/60'
+                      ? 'border-[hsl(var(--primary))/0.35] bg-[hsl(var(--primary))/0.08] text-[hsl(var(--primary))]'
+                      : 'border-transparent hover:border-border hover:bg-muted/60'
                       }`}
                   >
                     <div className={`mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${currentSessionId === session.id
-                        ? 'bg-[hsl(var(--primary))/0.2]'
-                        : 'bg-muted'
+                      ? 'bg-[hsl(var(--primary))/0.2]'
+                      : 'bg-muted'
                       }`}>
                       <MessageSquare className="w-3.5 h-3.5" />
                     </div>
