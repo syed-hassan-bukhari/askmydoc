@@ -72,7 +72,7 @@ Deployment        →  Vercel (recommended)
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/askmydoc.git
+git clone https://github.com/syed-hassan-bukhari/askmydoc.git
 cd askmydoc
 npm install
 ```
